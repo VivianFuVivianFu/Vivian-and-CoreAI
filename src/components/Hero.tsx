@@ -5,7 +5,7 @@ import heroVideo from "../../ai.mp4.mp4";
 export function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden bg-background">
-      <div className="absolute inset-0 -z-10 overflow-hidden flex items-center justify-center">
+      <div className="hero-video-container absolute top-0 left-1/2 bottom-0 -z-10 overflow-hidden flex items-center justify-center">
         <video
           className="hero-video pointer-events-none"
           src={heroVideo}
@@ -31,7 +31,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto"
+          className="text-lg text-foreground mb-10 max-w-2xl mx-auto"
         >
           Engineering AI with Human-Centered Design
         </motion.p>

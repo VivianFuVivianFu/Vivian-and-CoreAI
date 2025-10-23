@@ -208,3 +208,9 @@ html {
   transform: scale(0.8);
   transform-origin: center;
 }
+
+.hero-video-container {
+  width: 100vw;
+  height: 100%;
+  transform: translateX(-50%);
+}
