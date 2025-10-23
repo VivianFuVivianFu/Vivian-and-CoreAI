@@ -202,8 +202,8 @@ html {
 }
 
 .hero-video {
-  width: 120%;
-  height: 120%;
+  width: 125%;
+  height: 125%;
   object-fit: cover;
   transform: scale(0.8);
   transform-origin: center;
