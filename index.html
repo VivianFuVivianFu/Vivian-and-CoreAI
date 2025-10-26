@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core AI - Engineering AI with Human-Centered Design</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        .transition-all {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .btn-primary {
+            background-color: #7C3AED;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 7px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #6D28D9;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(124, 58, 237, 0.3);
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            color: #7C3AED;
+            padding: 10px 20px;
+            border-radius: 7px;
+            font-size: 14px;
+            font-weight: 500;
+            border: 2px solid #7C3AED;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #7C3AED;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .card {
+            background: white;
+            border-radius: 7px;
+            padding: 27px;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: #7C3AED;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .mobile-frame {
+            position: relative;
+            width: 100%;
+            max-width: 256px;
+            aspect-ratio: 9/17.5;
+            margin: 0 auto;
+            background: #1F2937;
+            border-radius: 34px;
+            padding: 14px;
+            box-shadow: 0 21px 43px -10px rgba(0, 0, 0, 0.25);
+        }
+        
+        .mobile-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #EDE9FE 0%, #DBEAFE 100%);
+            border-radius: 26px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Hide deployment platform badges */
+        iframe[src*="minimax"],
+        [class*="minimax"],
+        [id*="minimax"],
+        [class*="badge"][class*="agent"],
+        [class*="created-by"],
+        div[style*="position: fixed"][style*="bottom"] {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+        }
+    </style>
+</head>
+<body class="text-gray-900">
+    <!-- Header/Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white border-b border-gray-200 z-50">
+        <div class="max-w-6xl mx-auto px-5 py-3">
+            <div class="flex items-center justify-between">
+                <div class="text-xl font-bold" style="color: #7C3AED;">Core AI</div>
+                <div class="flex items-center space-x-7">
+                    <a href="#home" class="text-sm text-gray-700 hover:text-purple-600 transition-colors">Home</a>
+                    <a href="#luma" class="text-sm text-gray-700 hover:text-purple-600 transition-colors">Luma</a>
+                    <a href="#contact" class="btn-primary inline-block">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Extended Video Background -->
+    <section id="home" class="relative overflow-hidden" style="background: #000000; min-height: 100vh;">
+        <!-- Video Background -->
+        <div class="absolute z-0" style="top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100vw; height: 100vh;">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 100%;">
+                <video autoplay loop muted playsinline style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8); min-width: 130%; min-height: 130%; width: auto; height: auto; object-fit: cover; object-position: center center; opacity: 0.65;">
+                    <source src="videos/ai-background.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="absolute inset-0" style="
+                background: linear-gradient(90deg, 
+                    rgba(245, 250, 255, 0.5) 0%, 
+                    rgba(240, 248, 255, 0.4) 50%, 
+                    rgba(245, 250, 255, 0.45) 100%
+                );
+            "></div>
+        </div>
+        
+        <!-- Hero Content -->
+        <div class="pt-28 pb-14 px-5 relative z-10" style="padding-top: calc(7rem + 10vh);">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-3xl md:text-4xl font-bold mb-3 leading-tight" style="color: #1F2937;">
+                    Engineering AI with Human-Centered Design
+                </h1>
+                <p class="text-lg mb-8" style="color: #0F172A; font-weight: 500;">
+                    We build intelligent systems that empower human potential
+                </p>
+            </div>
+        </div>
+
+        <!-- Why Core AI Section (with same video background) -->
+        <div id="about" class="px-5 relative z-10" style="padding-top: calc(3.5rem - 10vh); padding-bottom: 3.5rem;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-10">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-2" style="color: #1F2937;">Why Core AI</h2>
+                    <p class="text-lg mb-7" style="color: #0F172A; font-weight: 500;">
+                        Building with Intelligence, Integrity, and Speed
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-7">
+                    <div class="card hover-lift">
+                        <h3 class="text-xl font-semibold mb-3" style="color: #1F2937;">Systems Thinking</h3>
+                        <p style="color: #6B7280;">
+                            Designing solutions that compound value by connecting the whole system.
+                        </p>
+                    </div>
+
+                    <div class="card hover-lift">
+                        <h3 class="text-xl font-semibold mb-3" style="color: #1F2937;">Evidence Over Hype</h3>
+                        <p style="color: #6B7280;">
+                            Focusing on clarity, impact, and lasting value — not noise.
+                        </p>
+                    </div>
+
+                    <div class="card hover-lift">
+                        <h3 class="text-xl font-semibold mb-3" style="color: #1F2937;">Rapid Prototyping</h3>
+                        <p style="color: #6B7280;">
+                            From idea to pilot in weeks, not quarters. Speed with precision creates real progress.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Gradient Transition -->
+        <div class="relative z-10 h-17" style="background: linear-gradient(to bottom, transparent 0%, #f0f5fa 100%);"></div>
+    </section>
+
+    <!-- Meet Luma Section -->
+    <section id="luma" class="py-14 px-5" style="background-color: #f0f5fa;">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-14">
+                <h2 class="text-2xl md:text-3xl font-bold mb-3" style="color: #1F2937;">Meet Luma — Core AI's Flagship Product</h2>
+                <p class="text-lg" style="color: #6B7280;">
+                    Your Intelligent Companion for Growth and Clarity.
+                </p>
+            </div>
+
+            <!-- Feature Cards -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-7 mb-14">
+                <div class="card hover-lift">
+                    <div class="w-10 h-10 rounded-full mb-3 flex items-center justify-center" style="background-color: #EDE9FE;">
+                        <svg class="w-5 h-5" style="color: #7C3AED;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2" style="color: #1F2937;">Chat</h3>
+                    <p class="text-sm" style="color: #6B7280;">Always-on emotional support with an AI that understands nuance.</p>
+                </div>
+
+                <div class="card hover-lift">
+                    <div class="w-10 h-10 rounded-full mb-3 flex items-center justify-center" style="background-color: #EDE9FE;">
+                        <svg class="w-5 h-5" style="color: #7C3AED;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2" style="color: #1F2937;">Journal</h3>
+                    <p class="text-sm" style="color: #6B7280;">Guided reflection and intelligent reframes for personal growth.</p>
+                </div>
+
+                <div class="card hover-lift">
+                    <div class="w-10 h-10 rounded-full mb-3 flex items-center justify-center" style="background-color: #EDE9FE;">
+                        <svg class="w-5 h-5" style="color: #7C3AED;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2" style="color: #1F2937;">Goals</h3>
+                    <p class="text-sm" style="color: #6B7280;">Smart nudges and progress tracking — accountability without pressure.</p>
+                </div>
+
+                <div class="card hover-lift">
+                    <div class="w-10 h-10 rounded-full mb-3 flex items-center justify-center" style="background-color: #EDE9FE;">
+                        <svg class="w-5 h-5" style="color: #7C3AED;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2" style="color: #1F2937;">Tools</h3>
+                    <p class="text-sm" style="color: #6B7280;">On-demand exercises for calm, clarity, and empowerment.</p>
+                </div>
+            </div>
+
+            <!-- Mobile Demo Video -->
+            <div class="mb-10">
+                <div class="mobile-frame">
+                    <div class="mobile-screen">
+                        <div class="text-center p-7">
+                            <svg class="w-14 h-14 mx-auto mb-3" style="color: #7C3AED;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <p class="text-base font-semibold" style="color: #1F2937;">Demo Video</p>
+                            <p class="text-xs" style="color: #6B7280;">30-60s</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beta Message -->
+            <div class="max-w-2xl mx-auto text-center">
+                <p class="text-base mb-5" style="color: #6B7280;">
+                    Luma is currently in its testing phase — we'd love for you to be among our first users and help us make it even better.
+                </p>
+                <a href="https://dearluma.app" class="btn-primary inline-block" target="_blank" rel="noopener noreferrer">Join the Beta</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work with Vivian Section -->
+    <section id="work" class="py-14 px-5" style="background-color: #f0f5fa;">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-14">
+                <h2 class="text-2xl md:text-3xl font-bold mb-3" style="color: #1F2937;">Work with Vivian</h2>
+                <p class="text-lg" style="color: #6B7280;">
+                    Strategic AI Partnership for Visionary Teams
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-7 mb-10">
+                <div class="card hover-lift">
+                    <h3 class="text-xl font-semibold mb-2" style="color: #1F2937;">AI Strategy Sprint</h3>
+                    <p class="text-xs mb-3" style="color: #7C3AED;">2 Weeks</p>
+                    <p class="text-sm" style="color: #6B7280;">
+                        Define outcomes, assess risks, and map your clearest path to validation.
+                    </p>
+                </div>
+
+                <div class="card hover-lift relative">
+                    <span class="popular-badge">MOST POPULAR</span>
+                    <h3 class="text-xl font-semibold mb-2" style="color: #1F2937;">MVP Co-Build</h3>
+                    <p class="text-xs mb-3" style="color: #7C3AED;">4–6 Weeks</p>
+                    <p class="text-sm" style="color: #6B7280;">
+                        Design, develop, and deploy a testable AI product with metrics that matter.
+                    </p>
+                </div>
+
+                <div class="card hover-lift">
+                    <h3 class="text-xl font-semibold mb-2" style="color: #1F2937;">AI Advisory</h3>
+                    <p class="text-xs mb-3" style="color: #7C3AED;">Ongoing</p>
+                    <p class="text-sm" style="color: #6B7280;">
+                        Long-term guidance for strategy, ethics, and growth.
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="#contact" class="btn-primary inline-block">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder's Vision Section -->
+    <section id="founder" class="py-14 px-5" style="background-color: #ffffff;">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-14 items-center">
+                <!-- Left: Image with clean frame -->
+                <div class="flex justify-center md:justify-end">
+                    <div class="bg-white p-2 rounded-xl shadow-lg">
+                        <img src="images/vivian.png" alt="Vivian Fu - Founder of Core AI Limited" 
+                             class="rounded-lg" style="max-width: 300px; width: 100%;">
+                    </div>
+                </div>
+
+                <!-- Right: Content -->
+                <div class="space-y-5">
+                    <!-- Name with accent -->
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2" style="color: #1F2937;">Vivian Fu</h3>
+                        <div class="h-1 w-17 bg-gradient-to-r from-purple-600 to-blue-500 rounded-full"></div>
+                    </div>
+                    
+                    <!-- Bio -->
+                    <div class="bg-gray-50 p-5 rounded-xl border-l-3 border-purple-600">
+                        <p class="text-base leading-relaxed" style="color: #374151;">
+                            I build intelligent, safety-first, and human-centered AI. My work fuses neuroscience-informed design with systems thinking — integrating cognitive science, product architecture, and ethical AI practice. We ship with purpose, measure with integrity, and protect user dignity by design. Core AI exists to prove that powerful AI can be strategically leveraged for personal empowerment — showing that when technology is built with empathy and intelligence, it helps people think more clearly and live more powerfully.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="py-10 px-5" style="background-color: #1F2937;">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="text-xl font-bold mb-2" style="color: #7C3AED;">Core AI Ltd</div>
+            <p class="mb-2 text-sm" style="color: #9CA3AF;">Engineering AI with Human-Centered Design</p>
+            <p class="mb-2 text-sm" style="color: #9CA3AF;">Contact: vivian@core-ai.ai</p>
+            <p class="mb-5 text-sm" style="color: #9CA3AF;">Auckland, New Zealand</p>
+            <p class="text-xs" style="color: #6B7280;">© 2025 Core AI Limited. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
